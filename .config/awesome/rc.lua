@@ -24,7 +24,7 @@ beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
 theme.font = "monospace"
 
 -- This is used later as the default terminal and editor to run.
-terminal = "gnome-terminal --disable-factory --name='normal' "
+terminal = "urxvt -name='normal' "
 editor = os.getenv("EDITOR") or "editor"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -674,20 +674,22 @@ awful.rules.rules = {
 
     { rule = { class = "Gitk" },
       properties = { tag = tags[1][4] } },
+    { rule = { class = "Gitg" },
+      properties = { tag = tags[1][4] } },
 
-    { rule = { class = "Gnome-terminal", instance = "build" },
+    { rule = { class = "URxvt", instance = "build" },
       properties = { tag = tags[2][1] } },
 
-    { rule = { class = "Gnome-terminal", instance = "terminal" },
+    { rule = { class = "URxvt", instance = "terminal" },
       properties = { tag = tags[2][3] } },
 
-    { rule = { class = "Gnome-terminal", instance = "top" },
+    { rule = { class = "URxvt", instance = "top" },
       properties = { tag = tags[2][9] } },
 
-    { rule = { class = "Gnome-terminal", instance = "mail" },
+    { rule = { class = "URxvt", instance = "mail" },
       properties = { tag = tags[1][3] } },
 
-    { rule = { class = "Gnome-terminal", instance = "normal" },
+    { rule = { class = "URxvt", instance = "normal" },
       properties = { float = true } },
 
     { rule = { class = "VirtualBox", instance = "Qt-subapplication" },

@@ -34,20 +34,20 @@ echo "starting gnome screensaver daemon..."
 exec gnome-screensaver &
 
 echo "starting build terminals..."
-exec gnome-terminal --disable-factory --name="build" &
-exec gnome-terminal --disable-factory --name="build" &
-exec gnome-terminal --disable-factory --name="build" &
+exec urxvt -name="build" &
+exec urxvt -name="build" &
+exec urxvt -name="build" &
 
 echo "starting other terminals..."
-exec gnome-terminal --disable-factory --name="terminal" &
-exec gnome-terminal --disable-factory --name="terminal" &
-exec gnome-terminal --disable-factory --name="terminal" &
+exec urxvt -name="terminal" &
+exec urxvt -name="terminal" &
+exec urxvt -name="terminal" &
 
 echo "starting top..."
-exec gnome-terminal --disable-factory --name="top" -e "htop" &
+exec urxvt -name="top" -e "htop" &
 
 echo "starting alpine..."
-exec gnome-terminal --disable-factory --name="mail" -e "alpine" &
+exec urxvt -name="mail" -e "alpine" &
 
 echo "starting chromes..."
 exec google-chrome --user-data-dir=$HOME/.config/google-chrome         \
