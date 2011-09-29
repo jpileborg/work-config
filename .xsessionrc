@@ -1,0 +1,77 @@
+echo "running .xsessionrc"
+
+echo "xmodmap..."
+SYSMODMAP="/etc/X11/Xmodmap"
+USRMODMAP="$HOME/.Xmodmap"
+
+if [ -x /usr/bin/X11/xmodmap ]; then
+    if [ -f "$SYSMODMAP" ]; then
+        xmodmap "$SYSMODMAP"
+    fi
+    if [ -f "$USRMODMAP" ]; then
+        xmodmap "$USRMODMAP"
+    fi
+fi
+
+if [ -x /usr/bin/xrdb ]; then
+    if [ -f "$HOME/.Xresources" ]; then
+        xrdb -merge $HOME/.Xresources
+    fi
+fi
+
+#export http_proxy="http://wwwproxy.se.axis.se:3128/"
+#export https_proxy="https://wwwproxy.se.axis.com:3128/"
+
+#echo "setting gtk+ theme..."
+#gtk-theme-switch2 /usr/share/themes/Clearlooks
+
+echo "starting gnome settings daemon..."
+#exec gnome-settings-daemon >/dev/null 2>&1
+exec gnome-settings-daemon
+
+echo "starting gnome screensaver daemon..."
+#exec gnome-screensaver >/dev/null 2>&1 &
+exec gnome-screensaver &
+
+echo "starting build terminals..."
+exec gnome-terminal --disable-factory --name="build" &
+exec gnome-terminal --disable-factory --name="build" &
+exec gnome-terminal --disable-factory --name="build" &
+
+echo "starting other terminals..."
+exec gnome-terminal --disable-factory --name="terminal" &
+exec gnome-terminal --disable-factory --name="terminal" &
+exec gnome-terminal --disable-factory --name="terminal" &
+
+echo "starting top..."
+exec gnome-terminal --disable-factory --name="top" -e "htop" &
+
+echo "starting alpine..."
+exec gnome-terminal --disable-factory --name="mail" -e "alpine" &
+
+echo "starting chromes..."
+exec google-chrome --user-data-dir=$HOME/.config/google-chrome         \
+	--class=Google-chrome --name="public"  --proxy-server=wwwproxy.se.axis.com:3128 >/dev/null 2>&1 &
+exec google-chrome --user-data-dir=$HOME/.config/google-chrome-private \
+	--class=Google-chrome --name="private" --proxy-server=wwwproxy.se.axis.com:3128 >/dev/null 2>&1 &
+
+echo "starting emacs..."
+exec emacs &
+
+# echo "starting evolution..."
+# exec evolution >/dev/null 2>&1 &
+
+echo "starting spotify..."
+exec spotify >/dev/null 2>&1 &
+
+echo "starting virtualbox..."
+exec virtualbox >/dev/null 2>&1 &
+
+echo "starting update notification daemon..."
+exec update-notifier &
+
+# Does not work properly with the awesome systray
+# echo "starting mail notofication daemon..."
+# exec mail-notification >/dev/null 2>&1 &
+
+echo "all done!"
