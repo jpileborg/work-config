@@ -24,7 +24,7 @@ beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
 theme.font = "monospace"
 
 -- This is used later as the default terminal and editor to run.
-terminal = "urxvt -name='normal' "
+terminal = "urxvt -name normal "
 editor = os.getenv("EDITOR") or "editor"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -232,6 +232,25 @@ separator.text = '<span font="monospace"> </span>'
 
 separator2      = widget({ type = "textbox", name = "separator", align = "right" })
 separator2.text = '<span font="monospace"> | </span>'
+
+function get_mail_count()
+    local confdir = awful.util.getdir("config")
+    local mails   = awful.util.pread("python "..confdir.."/imap.py")
+
+    local _, _, messages = mails:find("MESSAGES ([0-9]+)")
+    local _, _, unread   = mails:find("UNSEEN ([0-9]+)")
+
+    if unread ~= "0" then
+        unread = '<span color="#a6e6a6" weight="bold">'..unread..'</span>'
+    end
+    return '<span font="monospace">'..unread.."/"..messages..'</span>'
+end
+
+mailwidget = widget({ type = "textbox" })
+mailwidget.text = get_mail_count()
+mailwidgettimer = timer({ timeout = 60 })
+mailwidgettimer:add_signal("timeout", function() mailwidget.text = get_mail_count() end)
+mailwidgettimer:start()
 
 volwidget = widget({ type = "textbox" })
 vicious.register(volwidget, vicious.widgets.volume,
@@ -508,6 +527,8 @@ for s = 1, screen.count() do
         home_a,
         separator2,
         myweatherwidget:get_widgets(),
+		separator2,
+        mailwidget,
 		separator,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft

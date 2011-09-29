@@ -25,29 +25,28 @@ fi
 #echo "setting gtk+ theme..."
 #gtk-theme-switch2 /usr/share/themes/Clearlooks
 
-echo "starting gnome settings daemon..."
+#echo "starting gnome settings daemon..."
 #exec gnome-settings-daemon >/dev/null 2>&1
-exec gnome-settings-daemon
 
 echo "starting gnome screensaver daemon..."
 #exec gnome-screensaver >/dev/null 2>&1 &
 exec gnome-screensaver &
 
 echo "starting build terminals..."
-exec urxvt -name="build" &
-exec urxvt -name="build" &
-exec urxvt -name="build" &
+exec urxvt -name build &
+exec urxvt -name build &
+exec urxvt -name build &
 
 echo "starting other terminals..."
-exec urxvt -name="terminal" &
-exec urxvt -name="terminal" &
-exec urxvt -name="terminal" &
+exec urxvt -name terminal &
+exec urxvt -name terminal &
+exec urxvt -name terminal &
 
 echo "starting top..."
-exec urxvt -name="top" -e "htop" &
+exec urxvt -name top -e "htop" &
 
 echo "starting alpine..."
-exec urxvt -name="mail" -e "alpine" &
+exec urxvt -name mail -e "alpine" &
 
 echo "starting chromes..."
 exec google-chrome --user-data-dir=$HOME/.config/google-chrome         \
