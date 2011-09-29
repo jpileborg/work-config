@@ -19,9 +19,10 @@ require("debian.menu")
 
 
 -- {{{ Variable definitions
+local confdir = awful.util.getdir("config")
+
 -- Themes define colours, icons, and wallpapers
-beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
-theme.font = "monospace"
+beautiful.init(confdir.."/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt -name normal "
@@ -234,7 +235,6 @@ separator2      = widget({ type = "textbox", name = "separator", align = "right"
 separator2.text = '<span font="monospace"> | </span>'
 
 function get_mail_count()
-    local confdir = awful.util.getdir("config")
     local mails   = awful.util.pread("python "..confdir.."/imap.py")
 
     local _, _, messages = mails:find("MESSAGES ([0-9]+)")
