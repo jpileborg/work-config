@@ -11,6 +11,7 @@ URxvt*saveLines: 10000
 
 URxvt*background: #111111
 URxvt*foreground: #cccccc
+URxvt*cursorColor: #aaaa44
 
 /* TODO: Better colour for bright black(8) and bright white(15) */
 URxvt*color0: #111111

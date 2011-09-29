@@ -46,7 +46,7 @@ echo "starting top..."
 exec urxvt -name top -e "htop" &
 
 echo "starting alpine..."
-exec urxvt -name mail -e "alpine" &
+exec urxvt -name mail -sb -e "alpine" &
 
 echo "starting chromes..."
 exec google-chrome --user-data-dir=$HOME/.config/google-chrome         \
