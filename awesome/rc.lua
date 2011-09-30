@@ -69,9 +69,9 @@ tags[1] = awful.tag(
 
 -- Second screen
 tags[2] = awful.tag(
-    { "build", "web", "terminals", "remote", "spotify", 6, 7, 8, "top" },
+    { "build", "web", "calendar", "terminals", "spotify", 6, 7, 8, "top" },
     2,
-    { layouts[ 2], layouts[11], layouts[ 2], layouts[11], layouts[11],
+    { layouts[ 2], layouts[11], layouts[11], layouts[ 2], layouts[11],
       layouts[ 1], layouts[ 1], layouts[ 1], layouts[11] }
 )
 -- }}}
@@ -689,6 +689,8 @@ awful.rules.rules = {
 
     { rule = { class = "Emacs", instance = "emacs" },
       properties = { tag = tags[1][1] } },
+    { rule = { class = "Emacs", instance = "Calendar" },
+      properties = { tag = tags[2][3] } },
 
     { rule = { class = "Evolution" },
       properties = { tag = tags[1][3] } },
@@ -702,7 +704,7 @@ awful.rules.rules = {
       properties = { tag = tags[2][1] } },
 
     { rule = { class = "URxvt", instance = "terminal" },
-      properties = { tag = tags[2][3] } },
+      properties = { tag = tags[2][4] } },
 
     { rule = { class = "URxvt", instance = "top" },
       properties = { tag = tags[2][9] } },
