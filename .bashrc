@@ -108,7 +108,6 @@ export LESSCHARSET="utf-8"
 
 export CVS_RSH=ssh
 # export CVSROOT=":ext:dev-cvs.se.axis.com:/usr/local/cvs/linux"
-export PATH=$PATH:/sbin:/usr/sbin:/usr/local/sbin
 export AXIS_DEVELOPER=y
 export EDITOR=nano
 export GIT_EDITOR=nano

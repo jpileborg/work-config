@@ -16,10 +16,14 @@ if [ -n "$BASH_VERSION" ]; then
     fi
 fi
 
+PATH=/bin:/sbin
+PATH=$PATH:/usr/bin:/usr/sbin
+PATH=$PATH:/usr/local/bin:/usr/local/sbin
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
+    PATH="$PATH:$HOME/bin"
 fi
+export PATH
 
 export LANGUAGE="en_US:en"
 export LC_MESSAGES="en_US.UTF-8"
