@@ -109,7 +109,7 @@ function clone(t)            -- return a copy of the table t
 end
 
 -- {{{ Wibox
-local function show_calendar(w)
+local function show_calendar()
     -- TODO: Integrate with emacs org-mode
     -- TODO: Highlight dates with org entries, different colors depending on
     --       the type and state of the 'event'
@@ -169,12 +169,14 @@ local function show_calendar(w)
             if weeks[i][j] == 0 then
                 s = s.."   "
             else
-                if ""..weeks[i][j] == ""..today then
-                    s = s..'<span weight="bold" color="#95f795">'..string.format("%02d", weeks[i][j])..'</span> '
+                local d = string.format("%02d", weeks[i][j])
+                if d == today then
+                    s = s..'<span weight="bold" color="#95f795">'..d..'</span>'
                     w = true
                 else
-                    s = s..string.format("%02d ", weeks[i][j])
+                    s = s..d
                 end
+                s = s.." "
             end
         end
 
