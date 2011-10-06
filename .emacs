@@ -14,7 +14,7 @@
  '(calendar-frame-parameters (quote ((name . "Calendar") (title . "Calendar") (height . 10) (width . 80) (unsplittable . t) (minibuffer . t) (vertical-scroll-bars))))
  '(calendar-holidays (quote ((holiday-fixed 1 1 "Nyårsdagen") (holiday-easter-etc -3 "Skärtorsdagen") (holiday-easter-etc -2 "Långfredagen") (holiday-easter-etc -1 "Påskafton") (holiday-easter-etc 0 "Påskdagen") (holiday-easter-etc 1 "Annandag påsk") (holiday-easter-etc 39 "Kristi himmelsfärdsdag") (holiday-fixed 5 1 "Första maj") (holiday-fixed 6 6 "Sveriges nationaldag") (holiday-float 6 5 4 "Midsommarafton") (holiday-float 6 6 4 "Midsommardagen") (holiday-float 11 6 1 "Alla helgons dag") (holiday-fixed 12 24 "Julafton") (holiday-fixed 12 25 "Juldagen") (holiday-fixed 12 25 "Annandag jul") (holiday-fixed 12 31 "Nyårsafton") (holiday-trettondagen))))
  '(calendar-latitude 55.71864)
- '(calendar-location-name (quote Lund))
+ '(calendar-location-name "Lund")
  '(calendar-longitude 13.21987)
  '(calendar-mark-diary-entries-flag t)
  '(calendar-mark-holidays-flag t)

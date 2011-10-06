@@ -250,6 +250,9 @@ end
 
 mailwidget = widget({ type = "textbox" })
 mailwidget.text = get_mail_count()
+mailwidget:buttons(awful.util.table.join(
+					  awful.button({ }, 1, function () mailwidget.text = get_mail_count() end)
+              ))
 mailwidgettimer = timer({ timeout = 60 })
 mailwidgettimer:add_signal("timeout", function() mailwidget.text = get_mail_count() end)
 mailwidgettimer:start()
@@ -712,6 +715,9 @@ awful.rules.rules = {
       properties = { tag = tags[2][9] } },
 
     { rule = { class = "URxvt", instance = "mail" },
+      properties = { tag = tags[1][3] } },
+
+    { rule = { class = "Icedove" },
       properties = { tag = tags[1][3] } },
 
     { rule = { class = "URxvt", instance = "normal" },
