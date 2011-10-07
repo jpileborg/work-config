@@ -480,7 +480,7 @@ x   )
    (concat
 	"# -*- coding: utf-8 -*-\n"
 	"######################################################################\n"
-	"# File:                                                  Part of PMS #\n"
+	"# File:                                                 Part of PyWM #\n"
 	"#                                                                    #\n"
 	"# Copyright (C) 2011, Joachim Pileborg <arrow@pileborg.org>.         #\n"
 	"# All rights reserved.                                               #\n"
