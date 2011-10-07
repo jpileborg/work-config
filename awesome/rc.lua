@@ -390,19 +390,13 @@ cpuwidget:set_gradient_colors({ "#ff7676", "#e6a6a6", "#b6b6a6", "#a6e6a6", "#a6
 cpuwidget:set_gradient_angle(0)
 vicious.register(cpuwidget, vicious.widgets.cpu, "$1", 2)
 
---sunicon = widget({ type = "imagebox" })
---sunicon.image = "http://api.yr.no/weatherapi/weathericon/1.0/?symbol=1;content_type=image/png"
-weatherwidget = widget({ type = "textbox" })
-vicious.register(weatherwidget, vicious.widgets.weather,
-				 "☁ ${sky} ${tempc}°", 60, "ESMS")
-
 home_p = awful.widget.progressbar()
 home_p:set_width(8)
 home_p:set_vertical(true)
 home_p:set_background_color("#494B4F")
 home_p:set_border_color(nil)
 home_p:set_color("#a6e6a6")
-home_p:set_gradient_colors({ "#a6e6a6", "#a6c6a6", "#b6b6a6", "#e6a6a6", "#ff7676" })
+home_p:set_gradient_colors({ "#ff7676", "#e6a6a6", "#b6b6a6", "#a6e6a6", "#a6faa6" })
 vicious.register(home_p, vicious.widgets.fs,
                  function (w, a)
                      return (100 - a["{/home used_p}"])
