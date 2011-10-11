@@ -463,13 +463,6 @@ mytasklist.buttons = awful.util.table.join(
                                               if client.focus then client.focus:raise() end
                                           end))
 
--- Testing another weather widget
---require("weather")
---ww1 = widget({ type = "textbox" })
---ww2 = widget({ type = "imagebox" })
---weather.addWeather(ww1, "malmo")
---weather.addWeather(ww2, "malmo")
-
 myweatherwidget = myweather.create("malmö")
 
 
