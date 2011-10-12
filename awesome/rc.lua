@@ -691,6 +691,8 @@ awful.rules.rules = {
       properties = { tag = tags[1][4] } },
     { rule = { class = "Gitg" },
       properties = { tag = tags[1][4] } },
+    { rule = { class = "Hgtk" },
+      properties = { tag = tags[1][4] } },
 
     { rule = { class = "URxvt", instance = "build" },
       properties = { tag = tags[2][1] } },

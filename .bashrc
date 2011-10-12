@@ -58,20 +58,17 @@ function prompt_error_code() {
     fi;
 }
 
-function parse_git_branch {
+function parse_git_branch() {
     git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/';
 }
 
-# function parse_git_branch {
-#     b="`git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'`";
-#     if [ "$b" != "" ]; then
-#         echo "$b";
-#     fi;
-# }
+function parse_hg_branch() {
+    hg branch 2>&1 | sed -e '/^abort/d' -e 's/.*/(\0)/'
+}
 
 if [ "$color_prompt" = yes ]; then
     # PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-    PS1='\[\033[1m\]$(prompt_error_code)$(parse_git_branch)\[\033[0m\]${debian_chroot:+($debian_chroot)}[\[\033[01;34m\]\w\[\033[0m\]]\$ '
+    PS1='\[\033[1m\]$(prompt_error_code)$(parse_git_branch)$(parse_hg_branch)\[\033[0m\]${debian_chroot:+($debian_chroot)}[\[\033[01;34m\]\w\[\033[0m\]]\$ '
 else
     # PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
     PS1='$(prompt_error_code)${debian_chroot:+($debian_chroot)}[\w\]\$ '
@@ -145,3 +142,4 @@ complete -W "`find $HOME/products/*/* -maxdepth 0 -type d | cut -d '/' -f 5-6`" 
 
 export LESSOPEN="| /usr/bin/lesspipe %s";
 export LESSCLOSE="/usr/bin/lesspipe %s %s";
+export LESS=" -M -R "
