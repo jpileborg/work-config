@@ -248,14 +248,14 @@ function get_mail_count()
     return '<span font="monospace">'..unread.."/"..messages..'</span>'
 end
 
-mailwidget = widget({ type = "textbox" })
-mailwidget.text = get_mail_count()
-mailwidget:buttons(awful.util.table.join(
-					  awful.button({ }, 1, function () mailwidget.text = get_mail_count() end)
-              ))
-mailwidgettimer = timer({ timeout = 60 })
-mailwidgettimer:add_signal("timeout", function() mailwidget.text = get_mail_count() end)
-mailwidgettimer:start()
+--mailwidget = widget({ type = "textbox" })
+--mailwidget.text = get_mail_count()
+--mailwidget:buttons(awful.util.table.join(
+--					  awful.button({ }, 1, function () mailwidget.text = get_mail_count() end)
+--              ))
+--mailwidgettimer = timer({ timeout = 60 })
+--mailwidgettimer:add_signal("timeout", function() mailwidget.text = get_mail_count() end)
+--mailwidgettimer:start()
 
 volwidget = widget({ type = "textbox" })
 vicious.register(volwidget, vicious.widgets.volume,
@@ -519,8 +519,8 @@ for s = 1, screen.count() do
         home_a,
         separator2,
         myweatherwidget:get_widgets(),
-		separator2,
-        mailwidget,
+		--separator2,
+        --mailwidget,
 		separator,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
